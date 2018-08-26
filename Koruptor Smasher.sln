@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{BE2C6A7A-8807-CB03-A3C7-31049B5BD2DE}") = "Koruptor Smasher", "Assembly-CSharp.csproj", "{AB65F86F-660C-6CB4-C5A8-81AC0220E226}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AB65F86F-660C-6CB4-C5A8-81AC0220E226}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB65F86F-660C-6CB4-C5A8-81AC0220E226}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB65F86F-660C-6CB4-C5A8-81AC0220E226}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB65F86F-660C-6CB4-C5A8-81AC0220E226}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
