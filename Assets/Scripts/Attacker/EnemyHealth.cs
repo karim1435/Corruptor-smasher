@@ -5,14 +5,13 @@ public class EnemyHealth : MonoBehaviour {
     private float initialHp;
     private float currentHp;
     private float point;
+    private float damage=1.0f;
 
     private Enemy enemy;
 
     public delegate void UpdateHp();
     public event UpdateHp OnZeroHealth;
 
-    public delegate void ReportElectric();
-    public event ReportElectric onZeroEnemy;
     public float CurrentHp { get {return currentHp; } protected set { currentHp = value; } }
 
   
@@ -32,18 +31,14 @@ public class EnemyHealth : MonoBehaviour {
         if (currentHp<=0)
         {
             if (OnZeroHealth != null)
-            {
                 OnZeroHealth();
-            }
         }
     }
     protected virtual void OnMouseDown()
     {
         if (!GameManager.instance.IsGameRunning()) return;
         if (currentHp > 0)
-        {
-            AttackHp(1);
-        }
+            AttackHp(damage);
     }
 
 }

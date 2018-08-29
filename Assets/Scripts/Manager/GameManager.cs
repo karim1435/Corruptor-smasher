@@ -4,31 +4,24 @@ using System.Collections.Generic;
 using System;
 using UnityEngine.UI;
 using Assets.Assets;
+using Assets.Scripts.Manager;
 
 public class GameManager : MonoBehaviour {
+    public static GameManager instance;
+
     [SerializeField]
     private Transform left;
-    public Transform top;
-    public Transform right;
-    public Transform bottom;
+    [SerializeField]
+    private Transform top;
+    [SerializeField]
+    private Transform right;
+    [SerializeField]
+    private Transform bottom;
 
-    public float roundDuration = 60f;
+    private float roundDuration = 60f;
     private float elapsedTime = 0f;
-    public static GameManager instance;
     private GameState gameState;
     private float score;
-
-    public GameState GameState
-    {
-        get
-        {
-            return gameState;
-        }
-        set
-        {
-            gameState=value;
-        }
-    }
     void Awake()
     {
         if (instance == null)
@@ -37,6 +30,8 @@ public class GameManager : MonoBehaviour {
         Time.timeScale = 1;
         gameState = GameState.Running;
     }
+    public GameState GameState{ get { return gameState; } set { gameState = value; } }
+    
     public bool IsGameRunning()
     {
         return GameState == GameState.Running;
@@ -59,7 +54,17 @@ public class GameManager : MonoBehaviour {
     }
     void Update()
     {
+        TimerTick();
+        ManageGameState();
+    }
+
+    private void TimerTick()
+    {
         elapsedTime += Time.deltaTime;
+    }
+
+    private void ManageGameState()
+    {
         switch (gameState)
         {
             case GameState.Running:
@@ -75,19 +80,17 @@ public class GameManager : MonoBehaviour {
             case GameState.GameOver:
                 Time.timeScale = 0;
                 break;
-            default:
-                break;
         }
-        
     }
-    public  Vector3 Left
+
+    public Vector3 Left
     {
         get
         {
             return left.position;
         }
     }
-    public  Vector3 Right
+    public Vector3 Right
     {
         get
         {
@@ -109,4 +112,3 @@ public class GameManager : MonoBehaviour {
         }
     }
 }
-public enum GameState { Running,WinScreen,GameOver}

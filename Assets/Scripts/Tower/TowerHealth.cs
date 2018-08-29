@@ -31,7 +31,6 @@ public class TowerHealth : MonoBehaviour {
             float attackPower = other.GetComponent<Enemy>().AttackPower;
             AttackHp(attackPower);
         }
-
     }
     private void AttackHp(float damage)
     {

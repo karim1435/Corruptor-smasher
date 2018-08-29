@@ -3,30 +3,37 @@ using System.Collections;
 using Assets.Scripts.Attacker;
 
 public class RandomMovement :Movement {
+
     private float maxX;
     private float minX;
     private float maxY;
     private float minY;
 
-    private float tChange = 0.0f; // force new direction in the first Update
+    private float tChange = 0.0f; 
+
     private float randomX;
     private float randomY;
+
     private int offset=10;
     protected override void Start()
+    {
+        SetupBoundary();
+        base.Start();
+    }
+
+    private void SetupBoundary()
     {
         maxX = GameManager.instance.Right.x;
         minX = GameManager.instance.Left.x;
         maxY = GameManager.instance.Top.y;
         minY = (Screen.height / Camera.main.pixelHeight) / 2 + offset;
-        base.Start();
     }
-    void Update()
+
+    void FixedUpdate()
     {
         if (canMove)
-        {
             AssignNewRandomPosition();
-            ClamPositionByBound();
-        }
+        ClamPositionByBound();
     }
     private void ClamPositionByBound()
     {
@@ -38,8 +45,12 @@ public class RandomMovement :Movement {
 
     private void AssignNewRandomPosition()
     {
-        transform.Translate(RandomPosition() * speedMove * Time.deltaTime*0.5f);
+        transform.Translate(RandomPosition * speedMove * Time.deltaTime * 0.5f);
+        CheckIfIsTouchingBound();
+    }
 
+    private void CheckIfIsTouchingBound()
+    {
         bool boundXPos = transform.position.x >= maxX || transform.position.x <= minX;
         bool boundYMaxPos = transform.position.y >= maxY;
         bool boundYMinPos = transform.position.y <= minY;
@@ -50,15 +61,18 @@ public class RandomMovement :Movement {
             randomY = -randomY;
     }
 
-    private Vector3 RandomPosition()
+    private Vector3 RandomPosition
     {
-        if (Time.time >= tChange)
+        get
         {
-            randomX = Random.Range(-2.0f, 2.0f);
-            randomY = Random.Range(-2.0f, 2.0f); 
-                                                 
-            tChange = Time.time + Random.Range(100, 150);
+            if (Time.time >= tChange)
+            {
+                randomX = Random.Range(-2.0f, 2.0f);
+                randomY = Random.Range(-2.0f, 2.0f);
+
+                tChange = Time.time + Random.Range(100, 150);
+            }
+            return new Vector3(randomX, randomY, 0);
         }
-        return new Vector3(randomX, randomY, 0);
     }
 }

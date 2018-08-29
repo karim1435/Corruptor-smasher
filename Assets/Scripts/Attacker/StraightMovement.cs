@@ -3,6 +3,7 @@ using System.Collections;
 using Assets.Scripts.Attacker;
 
 public class StraightMovement : Movement {
+
     private Rigidbody2D body2d;
     protected override void Start()
     {

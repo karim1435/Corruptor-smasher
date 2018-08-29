@@ -20,7 +20,13 @@ namespace Assets.Scripts.Tower
         }
         void Update()
         {
-            if (liveImages.Length == 3 && previousLastCount != tower.CurrentHp)
+            HealthTower();
+        }
+
+        private void HealthTower()
+        {
+            if (liveImages.Length == 3 && 
+                previousLastCount != tower.CurrentHp)
             {
                 for (int i = 0; i < liveImages.Length; i++)
                 {

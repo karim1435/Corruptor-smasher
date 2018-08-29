@@ -11,12 +11,9 @@ public class EnemyDie : MonoBehaviour
     public delegate void ReportDie();
     public event ReportDie onReportMove;
 
-    
-    Spawner spawn;
 
     void Start()
     {
-        spawn = FindObjectOfType<Spawner>();
         anim = GetComponent<Animator>();
         currentSprite = GetComponent<SpriteRenderer>();
         enemyHealth = GetComponent<EnemyHealth>();
@@ -31,9 +28,14 @@ public class EnemyDie : MonoBehaviour
     {
         if (onReportMove != null)
             onReportMove();
-        anim.SetTrigger("IsDead");
         GameManager.instance.AddScore();
-        Destroy(gameObject,0.5f);
+        OnDeathAnimation();
+        
     }
 
+    private void OnDeathAnimation()
+    {
+        anim.SetTrigger("IsDead");
+        Destroy(gameObject, 0.5f);
+    }
 }

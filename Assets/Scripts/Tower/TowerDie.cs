@@ -2,6 +2,7 @@
 using System.Collections;
 using System;
 using Assets.Scripts.Attacker;
+using Assets.Scripts.Manager;
 
 public class TowerDie : MonoBehaviour {
 
@@ -22,7 +23,6 @@ public class TowerDie : MonoBehaviour {
     {
         isGameOver = true;
         GameManager.instance.GameState = GameState.GameOver;
-        Debug.Log("Dead");
     }
                                                    
 }

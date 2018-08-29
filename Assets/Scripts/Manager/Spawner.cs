@@ -6,47 +6,60 @@ using System.Collections.Generic;
 using Assets.Assets;
 
 public class Spawner : MonoBehaviour {
-    public bool active = true;
-    public Vector2 delayRange = new Vector2(1f, 1.5f);
-    public GameObject[] enemiesPrefarb;
+    [SerializeField]
+    private Vector2 delayRange = new Vector2(1f, 1.5f);
+    [SerializeField]
+    private GameObject[] enemiesPrefarb;
+
     private float nextSpawnTime = 0f;
     private float spawnTimer = 0f;
 
-    private Vector3 topLeftSpawner()
+    private Vector3 topLeftSpawner
     {
-        return Camera.main.ScreenToWorldPoint(new Vector3(0, Camera.main.pixelHeight + 2, 0));
+        get
+        {
+            return Camera.main.ScreenToWorldPoint(
+                new Vector3(0, Camera.main.pixelHeight + 2, 0));
+        }
     }
-    private Vector3 topRightSpawner()
+    private Vector3 topRightSpawner
     {
-        return Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, Camera.main.pixelHeight + 2, 0));
+        get
+        {
+            return Camera.main.ScreenToWorldPoint(new Vector3
+                (Camera.main.pixelWidth, Camera.main.pixelHeight + 2, 0));
+        }
+        
     }
-    private Vector3 generateSpawnerPos()
+    private Vector3 SpawnerPosition
     {
-        return new Vector3(UnityEngine.Random.Range(topLeftSpawner().x,
-            topRightSpawner().x), 
-            topLeftSpawner().y, 0);
+        get
+        {
+            return new Vector3(UnityEngine.Random.Range(topLeftSpawner.x,
+            topRightSpawner.x),
+            topLeftSpawner.y, 0);
+        }  
     }
-    private float delay
+    private float DelayTime
     {
         get
         {
             return UnityEngine.Random.Range(delayRange.x, delayRange.y);
         }
     }
-   
+
     void Update()
     {
-        GenerateEnemy();
+        GenerateRandomEnemy();
     }
-    void GenerateEnemy()
+    void GenerateRandomEnemy()
     {
         if (spawnTimer >= nextSpawnTime)
         {
-            Vector3 randomPosition = generateSpawnerPos();
             GameObject enemy = enemiesPrefarb[Random.Range(0, enemiesPrefarb.Length)];
             
-            GameObject spawnEnemy = (GameObject)Instantiate(enemy, randomPosition, Quaternion.identity);
-            nextSpawnTime = spawnTimer + delay;
+            GameObject spawnEnemy = (GameObject)Instantiate(enemy, SpawnerPosition, Quaternion.identity);
+            nextSpawnTime = spawnTimer + DelayTime;
         }
         spawnTimer += Time.deltaTime;
     }
