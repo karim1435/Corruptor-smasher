@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.EventSystems;
 using System;
+using Assets.Scripts.Collectible_Item;
 
 public abstract class Defender : MonoBehaviour, IPointerDownHandler
 {
@@ -10,15 +11,19 @@ public abstract class Defender : MonoBehaviour, IPointerDownHandler
     public float TotalItem
     {
         get { return totalItem; }
-        private set { totalItem = value; }
+        protected set { totalItem = value; }
+    }
+    public void ExtraItem(float health)
+    {
+        TotalItem += health;
     }
     protected void SpendItem()
     {
-        totalItem--;
+        TotalItem--;
     }
     protected bool IsItemAvailable()
     {
-        return totalItem > 0;
+        return TotalItem > 0;
     }
     protected abstract void KillAllIncomingEnemy();
     private void UseItem()

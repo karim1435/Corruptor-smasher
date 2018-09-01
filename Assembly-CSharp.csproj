@@ -1,12 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{AB65F86F-660C-6CB4-C5A8-81AC0220E226}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -46,51 +45,57 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\PixelPerfectCamera.cs" />
-    <Compile Include="Assets\Scripts\Attacker\BadEnemy.cs" />
-    <Compile Include="Assets\Scripts\Attacker\BadEnemyDied.cs" />
-    <Compile Include="Assets\Scripts\Attacker\Enemy.cs" />
-    <Compile Include="Assets\Scripts\Attacker\EnemyDie.cs" />
-    <Compile Include="Assets\Scripts\Attacker\EnemyHealth.cs" />
-    <Compile Include="Assets\Scripts\Attacker\GoodEnemy.cs" />
-    <Compile Include="Assets\Scripts\Attacker\GoodEnemyDie.cs" />
-    <Compile Include="Assets\Scripts\Attacker\Movement.cs" />
-    <Compile Include="Assets\Scripts\Attacker\RandomMovement.cs" />
-    <Compile Include="Assets\Scripts\Attacker\StraightMovement.cs" />
-    <Compile Include="Assets\Scripts\Boundary\Batas.cs" />
-    <Compile Include="Assets\Scripts\Boundary\Bottom.cs" />
-    <Compile Include="Assets\Scripts\Boundary\Left.cs" />
-    <Compile Include="Assets\Scripts\Boundary\Right.cs" />
-    <Compile Include="Assets\Scripts\Boundary\Top.cs" />
-    <Compile Include="Assets\Scripts\Defender\Bomb.cs" />
-    <Compile Include="Assets\Scripts\Defender\Defender.cs" />
-    <Compile Include="Assets\Scripts\Defender\Electric.cs" />
-    <Compile Include="Assets\Scripts\Defender\ElectricArea.cs" />
-    <Compile Include="Assets\Scripts\Defender\ElectricFire.cs" />
-    <Compile Include="Assets\Scripts\Defender\Poison.cs" />
-    <Compile Include="Assets\Scripts\Defender\UIDefender.cs" />
-    <Compile Include="Assets\Scripts\Manager\DestroyOffscreen.cs" />
-    <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Manager\GameState.cs" />
-    <Compile Include="Assets\Scripts\Manager\Restart.cs" />
-    <Compile Include="Assets\Scripts\Manager\Spawner.cs" />
-    <Compile Include="Assets\Scripts\Manager\UIManager.cs" />
-    <Compile Include="Assets\Scripts\Pooler\GameObjectUtil.cs" />
-    <Compile Include="Assets\Scripts\Pooler\ObjectPool.cs" />
-    <Compile Include="Assets\Scripts\Pooler\RecycleGameobject.cs" />
-    <Compile Include="Assets\Scripts\Tower\Tower.cs" />
-    <Compile Include="Assets\Scripts\Tower\TowerDie.cs" />
-    <Compile Include="Assets\Scripts\Tower\TowerHealth.cs" />
-    <Compile Include="Assets\Scripts\Tower\UITower.cs" />
-    <Compile Include="Assets\Scripts\Utility\Tag.cs" />
-    <Compile Include="Assets\TiledBackground.cs" />
-    <None Include="Assets\ProjectSettings\ProjectVersion.txt" />
-    <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
-    </Reference>
+     <Compile Include="Assets\PixelPerfectCamera.cs" />
+     <Compile Include="Assets\Scripts\Attacker\BadEnemy.cs" />
+     <Compile Include="Assets\Scripts\Attacker\BadEnemyDied.cs" />
+     <Compile Include="Assets\Scripts\Attacker\Enemy.cs" />
+     <Compile Include="Assets\Scripts\Attacker\EnemyDie.cs" />
+     <Compile Include="Assets\Scripts\Attacker\EnemyHealth.cs" />
+     <Compile Include="Assets\Scripts\Attacker\GoodEnemy.cs" />
+     <Compile Include="Assets\Scripts\Attacker\GoodEnemyDie.cs" />
+     <Compile Include="Assets\Scripts\Attacker\Movement.cs" />
+     <Compile Include="Assets\Scripts\Attacker\RandomMovement.cs" />
+     <Compile Include="Assets\Scripts\Attacker\StraightMovement.cs" />
+     <Compile Include="Assets\Scripts\Boundary\Batas.cs" />
+     <Compile Include="Assets\Scripts\Boundary\Bottom.cs" />
+     <Compile Include="Assets\Scripts\Boundary\Left.cs" />
+     <Compile Include="Assets\Scripts\Boundary\Right.cs" />
+     <Compile Include="Assets\Scripts\Boundary\Top.cs" />
+     <Compile Include="Assets\Scripts\Collectible Item\BomItem.cs" />
+     <Compile Include="Assets\Scripts\Collectible Item\CollectibleItem.cs" />
+     <Compile Include="Assets\Scripts\Collectible Item\ElectricItem.cs" />
+     <Compile Include="Assets\Scripts\Collectible Item\HearthItem.cs" />
+     <Compile Include="Assets\Scripts\Collectible Item\PoisonItem.cs" />
+     <Compile Include="Assets\Scripts\Defender\Bomb.cs" />
+     <Compile Include="Assets\Scripts\Defender\Defender.cs" />
+     <Compile Include="Assets\Scripts\Defender\Electric.cs" />
+     <Compile Include="Assets\Scripts\Defender\ElectricArea.cs" />
+     <Compile Include="Assets\Scripts\Defender\ElectricFire.cs" />
+     <Compile Include="Assets\Scripts\Defender\Poison.cs" />
+     <Compile Include="Assets\Scripts\Defender\UIDefender.cs" />
+     <Compile Include="Assets\Scripts\Manager\DestroyOffscreen.cs" />
+     <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Manager\GameState.cs" />
+     <Compile Include="Assets\Scripts\Manager\Restart.cs" />
+     <Compile Include="Assets\Scripts\Manager\Spawner.cs" />
+     <Compile Include="Assets\Scripts\Manager\UIManager.cs" />
+     <Compile Include="Assets\Scripts\Pooler\GameObjectUtil.cs" />
+     <Compile Include="Assets\Scripts\Pooler\ObjectPool.cs" />
+     <Compile Include="Assets\Scripts\Pooler\RecycleGameobject.cs" />
+     <Compile Include="Assets\Scripts\Tower\Tower.cs" />
+     <Compile Include="Assets\Scripts\Tower\TowerDie.cs" />
+     <Compile Include="Assets\Scripts\Tower\TowerHealth.cs" />
+     <Compile Include="Assets\Scripts\Tower\UITower.cs" />
+     <Compile Include="Assets\Scripts\Utility\ExtensionHandy.cs" />
+     <Compile Include="Assets\Scripts\Utility\Tag.cs" />
+     <Compile Include="Assets\TiledBackground.cs" />
+     <None Include="Assets\ProjectSettings\ProjectVersion.txt" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Networking">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -100,4 +105,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  
 </Project>

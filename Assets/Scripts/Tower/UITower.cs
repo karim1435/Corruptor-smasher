@@ -15,7 +15,7 @@ namespace Assets.Scripts.Tower
         void Start()
         {
             tower = GameObject.FindObjectOfType<TowerHealth>();
-            previousLastCount = tower.CurrentHp;
+            previousLastCount = tower.CurrentHp; //3
             liveImages = GetComponentsInChildren<Image>();
         }
         void Update()
@@ -25,8 +25,7 @@ namespace Assets.Scripts.Tower
 
         private void HealthTower()
         {
-            if (liveImages.Length == 3 && 
-                previousLastCount != tower.CurrentHp)
+            if (liveImages.Length == 3)
             {
                 for (int i = 0; i < liveImages.Length; i++)
                 {

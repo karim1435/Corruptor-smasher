@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 using System;
 using System.Collections.Generic;
 using Assets.Scripts.Attacker;
+using Assets.Scripts.Collectible_Item;
 
 public class Electric : Defender
 {
@@ -19,7 +20,7 @@ public class Electric : Defender
         electricZone.OnElectricInArea += AddEnemy;
         electricZone.OnElectricOffArea += RemoveEnemy;
     }
-    void Disable()
+    void OnDisable()
     {
         electricZone.OnElectricInArea -= AddEnemy;
         electricZone.OnElectricOffArea -= RemoveEnemy;

@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 using System;
 using System.Collections.Generic;
 using Assets.Scripts.Attacker;
+using Assets.Scripts.Collectible_Item;
 
 public class Bomb : Defender
 {

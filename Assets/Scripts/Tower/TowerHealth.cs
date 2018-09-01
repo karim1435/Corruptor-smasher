@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Assets.Assets;
+using Assets.Scripts.Collectible_Item;
+using System;
 
 public class TowerHealth : MonoBehaviour {
 
     private float intialHp;
-    private float currentHp;
+    public float currentHp;
     private Tower tower;
-
     public float CurrentHp { get { return currentHp; } }
 
     public delegate void ReportHp();
@@ -23,6 +24,11 @@ public class TowerHealth : MonoBehaviour {
     void OnDisable()
     {
         tower.onCollisionEnemy -= OnTrigger;
+    }
+    public void BonusHealth(float health)
+    {
+        if (currentHp >= intialHp) return;
+        currentHp += health;
     }
     private void OnTrigger(Collider2D other)
     {

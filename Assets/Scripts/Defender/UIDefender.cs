@@ -38,7 +38,7 @@ public class UIDefender : MonoBehaviour {
     }
     private void ShowNumberElectric()
     {
-        currentElectric = electric.TotalItem;
+        currentElectric =electric.TotalItem;
         if (electricText)
             electricText.text = currentElectric.ToString();
     }
