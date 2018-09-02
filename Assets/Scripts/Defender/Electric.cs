@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using Assets.Scripts.Attacker;
 using Assets.Scripts.Collectible_Item;
 
-public class Electric : Defender
+public class Electric : DefenderParent
 {
     private List<GameObject> enemies;
     private ElectricArea electricZone;

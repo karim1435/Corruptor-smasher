@@ -32,7 +32,6 @@ public class EnemyDie : MonoBehaviour
         OnDeathAnimation();
         
     }
-
     private void OnDeathAnimation()
     {
         anim.SetTrigger("IsDead");

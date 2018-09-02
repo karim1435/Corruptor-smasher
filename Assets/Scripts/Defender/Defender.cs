@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 using System;
 using Assets.Scripts.Collectible_Item;
 
-public abstract class Defender : MonoBehaviour, IPointerDownHandler
+public abstract class DefenderParent : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField]
     private float totalItem;
@@ -33,8 +33,12 @@ public abstract class Defender : MonoBehaviour, IPointerDownHandler
     }
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (!GameManager.instance.IsGameRunning()) return;
-        if (IsItemAvailable())
-            UseItem();
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            if (!GameManager.instance.IsGameRunning()) return;
+            if (IsItemAvailable())
+                UseItem();
+        }
+        
     }
 }

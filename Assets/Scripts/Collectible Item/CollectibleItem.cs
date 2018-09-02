@@ -8,17 +8,18 @@ using Assets.Scripts.Defender;
 
 namespace Assets.Scripts.Collectible_Item
 {
-    public abstract class CollectibleItem:MonoBehaviour
+    public abstract class CollectibleItem<T> :MonoBehaviour where T : MonoBehaviour
     {
+        protected T defender;
         [SerializeField]
         protected float speedMove = 100;
         [SerializeField]
         protected float bonus;
-        protected Text infoBonusText;
 
         private Rigidbody2D body2d;
         protected virtual void Start()
         {
+            defender = GameObject.FindObjectOfType<T>();
             body2d = GetComponent<Rigidbody2D>();
         }
         void Update()
@@ -30,6 +31,9 @@ namespace Assets.Scripts.Collectible_Item
             GiveExtraBonus();
             Destroy(gameObject);
         }
-        protected abstract void GiveExtraBonus();
+        protected virtual void GiveExtraBonus()
+        {
+            defender.gameObject.GetComponent<DefenderParent>().ExtraItem(bonus);
+        }
     }
 }

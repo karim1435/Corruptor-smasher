@@ -45,7 +45,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\PixelPerfectCamera.cs" />
      <Compile Include="Assets\Scripts\Attacker\BadEnemy.cs" />
      <Compile Include="Assets\Scripts\Attacker\BadEnemyDied.cs" />
      <Compile Include="Assets\Scripts\Attacker\Enemy.cs" />
@@ -86,9 +85,7 @@
      <Compile Include="Assets\Scripts\Tower\TowerDie.cs" />
      <Compile Include="Assets\Scripts\Tower\TowerHealth.cs" />
      <Compile Include="Assets\Scripts\Tower\UITower.cs" />
-     <Compile Include="Assets\Scripts\Utility\ExtensionHandy.cs" />
      <Compile Include="Assets\Scripts\Utility\Tag.cs" />
-     <Compile Include="Assets\TiledBackground.cs" />
      <None Include="Assets\ProjectSettings\ProjectVersion.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-public class Poison : Defender
+public class Poison : DefenderParent
 {
     [SerializeField]
     private float poisonDelay=5f;

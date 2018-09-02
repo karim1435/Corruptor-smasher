@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using Assets.Scripts.Attacker;
 using Assets.Scripts.Collectible_Item;
 
-public class Bomb : Defender
+public class Bomb : DefenderParent
 {
     protected override void KillAllIncomingEnemy()
     {

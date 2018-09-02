@@ -5,17 +5,8 @@ using System.Text;
 
 namespace Assets.Scripts.Collectible_Item
 {
-    class ElectricItem : CollectibleItem
+    class ElectricItem : CollectibleItem<Bomb>
     {
-        Electric electric;
-        protected override void Start()
-        {
-            electric = FindObjectOfType<Electric>();
-            base.Start();
-        }
-        protected override void GiveExtraBonus()
-        {
-            electric.ExtraItem(bonus);
-        }
+
     }
 }

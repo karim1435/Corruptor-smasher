@@ -13,8 +13,6 @@ public class EnemyHealth : MonoBehaviour {
     public event UpdateHp OnZeroHealth;
 
     public float CurrentHp { get {return currentHp; } protected set { currentHp = value; } }
-
-  
     void Start()
     {
         enemy = GetComponent<Enemy>();

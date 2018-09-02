@@ -19,19 +19,16 @@ public class UIManager : MonoBehaviour
         CreateTimer();
         WinOrGameover();
     }
-
     private void SetScore()
     {
         if (scoreText)
             scoreText.text = GameManager.instance.Score.ToString();
     }
-
     private void CreateTimer()
     {
         if (timerText)
             timerText.text = FormatStringToTimer(GameManager.instance.GetRemainingTime());
     }
-
     private void WinOrGameover()
     {
         if (!GameManager.instance.IsGameRunning() && gameCanvas)
