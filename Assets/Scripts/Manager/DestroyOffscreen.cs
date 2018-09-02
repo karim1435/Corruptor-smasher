@@ -37,7 +37,6 @@ public class DestroyOffscreen : MonoBehaviour {
         }
         return false;
     }
-
     private void outOfBounds()
     {
         gameObject.SetActive(false);

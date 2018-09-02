@@ -7,9 +7,6 @@ using Assets.Scripts.Manager;
 public class TowerDie : MonoBehaviour {
 
     private TowerHealth towerHealth;
-    private bool isGameOver = false;
-    private GoodEnemy goodEnemy;
- 
     void Start()
     {
         towerHealth = GetComponent<TowerHealth>();
@@ -21,7 +18,6 @@ public class TowerDie : MonoBehaviour {
     }
     private void Dead()
     {
-        isGameOver = true;
         GameManager.instance.GameState = GameState.GameOver;
     }
                                                    

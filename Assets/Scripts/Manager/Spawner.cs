@@ -10,10 +10,12 @@ public class Spawner : MonoBehaviour {
     private float totalEnemyToSpawn;
     [SerializeField]
     private float totalItemToSpawn;
+
     [SerializeField]
     private Vector2 delayEnemyRange = new Vector2(1f, 1.5f);
     [SerializeField]
     private Vector2 delayItemRange = new Vector2(1f, 1.5f);
+
     [SerializeField]
     private GameObject[] enemiesPrefarb;
     [SerializeField]

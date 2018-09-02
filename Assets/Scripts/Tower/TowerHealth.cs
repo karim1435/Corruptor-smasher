@@ -6,13 +6,14 @@ using System;
 
 public class TowerHealth : MonoBehaviour {
 
-    private float intialHp;
-    public float currentHp;
-    private Tower tower;
-    public float CurrentHp { get { return currentHp; } }
-
     public delegate void ReportHp();
     public event ReportHp OnZeroHp;
+
+    private float intialHp;
+    private float currentHp;
+
+    private Tower tower;
+    public float CurrentHp { get { return currentHp; } }
 
     void Start()
     {

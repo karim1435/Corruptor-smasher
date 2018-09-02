@@ -33,12 +33,8 @@ public abstract class DefenderParent : MonoBehaviour, IPointerDownHandler
     }
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            if (!GameManager.instance.IsGameRunning()) return;
-            if (IsItemAvailable())
-                UseItem();
-        }
-        
+        if (!GameManager.instance.IsGameRunning()) return;
+        if (IsItemAvailable())
+            UseItem();
     }
 }

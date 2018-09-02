@@ -17,7 +17,7 @@ public class Poison : DefenderParent
         foreach (var enemy in FindObjectsOfType<Movement>())
         {
             if (enemy != null && enemy.tag == Tag.Enemy)
-                StartCoroutine(enemy.SilentMove(poisonDelay));
+                enemy.StopMove(poisonDelay);
         }
     }
 }

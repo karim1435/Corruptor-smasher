@@ -10,14 +10,17 @@ namespace Assets.Scripts.Collectible_Item
 {
     class UIInfoItem:MonoBehaviour
     {
+        [SerializeField]
+        private float delayInfoTime=0.5f;
+
         private Text infoText;
         void Start()
         {
             infoText = GetComponent<Text>();
         }
-        IEnumerator HideInfo()
+        private IEnumerator HideInfo()
         {
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(delayInfoTime);
             infoText.enabled = false;
         }
         public void ShowInfo(string info)

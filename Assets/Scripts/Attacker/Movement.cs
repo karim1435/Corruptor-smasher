@@ -10,15 +10,17 @@ namespace Assets.Scripts.Attacker
     public class Movement:MonoBehaviour
     {
         protected float speedMove;
+        protected bool canMove = true;
+
         private EnemyDie enemyDie;
         private Enemy enemy;
-        protected bool canMove = true;
+        
         protected virtual void Start()
         {
-            enemyDie = GetComponent<EnemyDie>();
             enemy = GetComponent<Enemy>();
-            enemyDie = GetComponent<EnemyDie>();
             speedMove = enemy.MoveSpeed;
+
+            enemyDie = GetComponent<EnemyDie>();
             enemyDie.onReportMove += SetMove;
         }
         void OnDisable()
@@ -29,9 +31,13 @@ namespace Assets.Scripts.Attacker
         {
             canMove = false;
         } 
-        public IEnumerator SilentMove(float delay)
+        public void StopMove(float delay)
         {
-            canMove = false;
+            SetMove();
+            StartCoroutine(SilentMove(delay));
+        }
+        private IEnumerator SilentMove(float delay)
+        {
             yield return new WaitForSeconds(delay);
             canMove = true;
         }

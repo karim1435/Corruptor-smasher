@@ -10,17 +10,16 @@ namespace Assets.Scripts.Collectible_Item
 {
     public abstract class CollectibleItem<T> :MonoBehaviour where T : MonoBehaviour
     {
-        protected T defender;
         [SerializeField]
         protected float speedMove = 100;
         [SerializeField]
         protected float bonus;
 
+        protected T defender;
         protected string info;
-
+    
         private Rigidbody2D body2d;
-
-        UIInfoItem uIInfoItem;
+        private UIInfoItem uIInfoItem;
         void Awake()
         {
             uIInfoItem = FindObjectOfType<UIInfoItem>();

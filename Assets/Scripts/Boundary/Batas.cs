@@ -45,7 +45,6 @@ namespace Assets.Scripts.Boundary
             boundaryCollider = GetComponent<BoxCollider2D>();
             CreateBoundary();
         }
- 
         public abstract void CreateBoundary();
     }
 }

@@ -3,21 +3,24 @@ using System.Collections;
 
 public class EnemyDie : MonoBehaviour
 {
+    public delegate void ReportDie();
+    public event ReportDie onReportMove;
+
     private EnemyHealth enemyHealth;
     private SpriteRenderer currentSprite;
     private Animator anim;
 
     private Enemy enemy;
-    public delegate void ReportDie();
-    public event ReportDie onReportMove;
-
 
     void Start()
     {
         anim = GetComponent<Animator>();
+
         currentSprite = GetComponent<SpriteRenderer>();
-        enemyHealth = GetComponent<EnemyHealth>();
+
         enemy = GetComponent<Enemy>();
+
+        enemyHealth = GetComponent<EnemyHealth>();
         enemyHealth.OnZeroHealth += Dead;
     }
     void OnDisable()

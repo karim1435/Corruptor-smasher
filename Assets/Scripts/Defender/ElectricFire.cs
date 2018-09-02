@@ -11,22 +11,21 @@ namespace Assets.Scripts.Defender
         [SerializeField]
         private GameObject prefarb;
 
+        private const float lifeTimeShoot = 0.1f;
         private Electric electric;
         void Start()
         {
             electric = GameObject.FindObjectOfType<Electric>();
             electric.OnFireAttack += SpawnPrefarb;
         }
-        void OnDisable()
+        private void OnDisable()
         {
             electric.OnFireAttack -= SpawnPrefarb;
         }
-        void SpawnPrefarb()
+        private void SpawnPrefarb()
         {
-            GameObject fire = Instantiate(prefarb);
-            fire.transform.position =transform.position;
-            fire.transform.rotation = Quaternion.identity;
-            Destroy(fire, 0.1f);
+            GameObject fire = (GameObject)Instantiate(prefarb, transform.position, Quaternion.identity);
+            Destroy(fire, lifeTimeShoot);
         }
     }
 }

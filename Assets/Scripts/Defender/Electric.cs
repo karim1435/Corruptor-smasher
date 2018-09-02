@@ -8,14 +8,15 @@ using Assets.Scripts.Collectible_Item;
 
 public class Electric : DefenderParent
 {
-    private List<GameObject> enemies;
-    private ElectricArea electricZone;
-
     public delegate void Fire();
     public event Fire OnFireAttack;
+
+    private List<GameObject> enemies;
+    private ElectricArea electricZone;
     void Start()
     {
         enemies = new List<GameObject>();
+
         electricZone = GameObject.FindObjectOfType<ElectricArea>();
         electricZone.OnElectricInArea += AddEnemy;
         electricZone.OnElectricOffArea += RemoveEnemy;
@@ -40,9 +41,14 @@ public class Electric : DefenderParent
             if (enemy != null)
                 enemy.GetComponent<BadEnemyDied>().Dead();
         }
-        if(OnFireAttack!=null)
-            OnFireAttack();
+        FireAnimaton();
         ClearEnemies();
+    }
+
+    private void FireAnimaton()
+    {
+        if (OnFireAttack != null)
+            OnFireAttack();
     }
     private void ClearEnemies()
     {

@@ -11,26 +11,27 @@ namespace Assets.Scripts.Tower
     {
         private Image[] liveImages;
         private TowerHealth tower;
-        private float previousLastCount = 0;
         void Start()
         {
             tower = GameObject.FindObjectOfType<TowerHealth>();
-            previousLastCount = tower.CurrentHp; //3
+       
             liveImages = GetComponentsInChildren<Image>();
         }
         void Update()
         {
             HealthTower();
         }
-
         private void HealthTower()
         {
             if (liveImages.Length == 3)
+                ShowHealthHeart();
+        }
+
+        private void ShowHealthHeart()
+        {
+            for (int i = 0; i < liveImages.Length; i++)
             {
-                for (int i = 0; i < liveImages.Length; i++)
-                {
-                    liveImages[i].enabled = (i + 1) <= tower.CurrentHp;
-                }
+                liveImages[i].enabled = (i + 1) <= tower.CurrentHp;
             }
         }
     }

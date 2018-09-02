@@ -7,7 +7,6 @@ using Assets.Assets;
 using Assets.Scripts.Manager;
 
 public class GameManager : MonoBehaviour {
-    public static GameManager instance;
 
     [SerializeField]
     private Transform left;
@@ -17,6 +16,8 @@ public class GameManager : MonoBehaviour {
     private Transform right;
     [SerializeField]
     private Transform bottom;
+
+    public static GameManager instance;
 
     private float roundDuration = 60f;
     private float elapsedTime = 0f;
@@ -57,12 +58,10 @@ public class GameManager : MonoBehaviour {
         TimerTick();
         ManageGameState();
     }
-
     private void TimerTick()
     {
         elapsedTime += Time.deltaTime;
     }
-
     private void ManageGameState()
     {
         switch (gameState)
@@ -82,29 +81,28 @@ public class GameManager : MonoBehaviour {
                 break;
         }
     }
-
-    public Vector3 Left
+    public Vector3 LeftBound
     {
         get
         {
             return left.position;
         }
     }
-    public Vector3 Right
+    public Vector3 RightBound
     {
         get
         {
             return right.position;
         }
     }
-    public Vector3 Top
+    public Vector3 TopBound
     {
         get
         {
             return top.position;
         }
     }
-    public Vector3 Bottom
+    public Vector3 BottomBound
     {
         get
         {
