@@ -12,5 +12,6 @@ namespace Assets.Scripts.Collectible_Item
         {
             defender.gameObject.GetComponent<TowerHealth>().BonusHealth(bonus);
         }
+
     }
 }

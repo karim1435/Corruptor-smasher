@@ -65,6 +65,7 @@
      <Compile Include="Assets\Scripts\Collectible Item\ElectricItem.cs" />
      <Compile Include="Assets\Scripts\Collectible Item\HearthItem.cs" />
      <Compile Include="Assets\Scripts\Collectible Item\PoisonItem.cs" />
+     <Compile Include="Assets\Scripts\Collectible Item\UIInfoItem.cs" />
      <Compile Include="Assets\Scripts\Defender\Bomb.cs" />
      <Compile Include="Assets\Scripts\Defender\Defender.cs" />
      <Compile Include="Assets\Scripts\Defender\Electric.cs" />

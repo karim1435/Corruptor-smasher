@@ -16,11 +16,19 @@ namespace Assets.Scripts.Collectible_Item
         [SerializeField]
         protected float bonus;
 
+        protected string info;
+
         private Rigidbody2D body2d;
+
+        UIInfoItem uIInfoItem;
+        void Awake()
+        {
+            uIInfoItem = FindObjectOfType<UIInfoItem>();
+        }
         protected virtual void Start()
         {
             defender = GameObject.FindObjectOfType<T>();
-            body2d = GetComponent<Rigidbody2D>();
+            body2d = GetComponent<Rigidbody2D>(); 
         }
         void Update()
         {
@@ -30,10 +38,15 @@ namespace Assets.Scripts.Collectible_Item
         {
             GiveExtraBonus();
             Destroy(gameObject);
+            InfoBonus(info);
         }
         protected virtual void GiveExtraBonus()
         {
             defender.gameObject.GetComponent<DefenderParent>().ExtraItem(bonus);
+        }
+        protected virtual void InfoBonus(string info)
+        {
+            uIInfoItem.ShowInfo(info);
         }
     }
 }
