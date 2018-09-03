@@ -5,6 +5,6 @@ using UnityEngine.EventSystems;
 public class Restart : MonoBehaviour,IPointerDownHandler {
     public void OnPointerDown(PointerEventData eventData)
     {
-        GameManager.instance.Restart();
+        GameManager.Instance.Restart();
     }
 }

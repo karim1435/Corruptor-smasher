@@ -30,14 +30,18 @@ public class EnemyDie : MonoBehaviour
     public virtual void Dead()
     {
         if (onReportMove != null)
-            onReportMove();
-        GameManager.instance.AddScore();
+            onReportMove(); 
+
         OnDeathAnimation();
-        
+      
     }
     private void OnDeathAnimation()
     {
         anim.SetTrigger("IsDead");
+        OnDestroyEnemy();
+    }
+    private void OnDestroyEnemy()
+    {
         Destroy(gameObject, 0.5f);
     }
 }

@@ -29,6 +29,6 @@ namespace Assets.Scripts.Collectible_Item
             infoText.text = info;
             StartCoroutine(HideInfo());
         }
-
+       
     }
 }

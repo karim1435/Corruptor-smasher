@@ -33,7 +33,7 @@ public class EnemyHealth : MonoBehaviour {
     }
     protected virtual void OnMouseDown()
     {
-        if (!GameManager.instance.IsGameRunning()) return;
+        if (!GameManager.Instance.IsGameRunning()) return;
         if (currentHp > 0)
             AttackHp(damage);
     }

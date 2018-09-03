@@ -23,9 +23,9 @@ public class RandomMovement :Movement {
 
     private void SetupBoundary()
     {
-        maxX = GameManager.instance.RightBound.x;
-        minX = GameManager.instance.LeftBound.x;
-        maxY = GameManager.instance.TopBound.y;
+        maxX = GameManager.Instance.RightBound.x;
+        minX = GameManager.Instance.LeftBound.x;
+        maxY = GameManager.Instance.TopBound.y;
         minY = (Screen.height / Camera.main.pixelHeight) / 2 + offset;
     }
 

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using Assets.Assets;
 using Assets.Scripts.Manager;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : Singleton<GameManager> {
 
     [SerializeField]
     private Transform left;
@@ -17,17 +17,12 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private Transform bottom;
 
-    public static GameManager instance;
-
     private float roundDuration = 60f;
     private float elapsedTime = 0f;
     private GameState gameState;
     private float score;
-    void Awake()
+    void Start()
     {
-        if (instance == null)
-            instance = this;
-
         Time.timeScale = 1;
         gameState = GameState.Running;
     }
@@ -37,9 +32,9 @@ public class GameManager : MonoBehaviour {
     {
         return GameState == GameState.Running;
     }
-    public void AddScore()
+    public void AddScore(float point)
     {
-        score += 10;
+        score += point;
     }
     public float Score
     {

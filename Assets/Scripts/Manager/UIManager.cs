@@ -22,20 +22,20 @@ public class UIManager : MonoBehaviour
     private void SetScore()
     {
         if (scoreText)
-            scoreText.text = GameManager.instance.Score.ToString();
+            scoreText.text = GameManager.Instance.Score.ToString();
     }
     private void CreateTimer()
     {
         if (timerText)
-            timerText.text = FormatStringToTimer(GameManager.instance.GetRemainingTime());
+            timerText.text = FormatStringToTimer(GameManager.Instance.GetRemainingTime());
     }
     private void WinOrGameover()
     {
-        if (!GameManager.instance.IsGameRunning() && gameCanvas)
+        if (!GameManager.Instance.IsGameRunning() && gameCanvas)
         {
             gameCanvas.SetActive(true);
             if (gameOverText)
-                gameOverText.text = GameManager.instance.GameState == GameState.WinScreen ? "You won!" : "Game Over";
+                gameOverText.text = GameManager.Instance.GameState == GameState.WinScreen ? "You won!" : "Game Over";
         }
     }
 

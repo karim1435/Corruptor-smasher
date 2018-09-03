@@ -11,7 +11,7 @@ namespace Assets.Scripts.Attacker
     {
         public override void Dead()
         {
-            GameManager.instance.GameState = GameState.GameOver;
+            GameManager.Instance.GameState = GameState.GameOver;
             base.Dead();
         }
     }

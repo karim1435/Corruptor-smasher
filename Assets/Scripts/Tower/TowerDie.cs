@@ -18,7 +18,7 @@ public class TowerDie : MonoBehaviour {
     }
     private void Dead()
     {
-        GameManager.instance.GameState = GameState.GameOver;
+        GameManager.Instance.GameState = GameState.GameOver;
     }
                                                    
 }

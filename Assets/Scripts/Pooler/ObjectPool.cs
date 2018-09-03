@@ -19,7 +19,7 @@ public class ObjectPool : MonoBehaviour {
     }
     public RecycleGameobject NextObject(Vector3 pos)
     {
-        RecycleGameobject instance = null;
+        RecycleGameobject Instance = null;
         //For through in poolInstances (recyclegameObject)
         foreach (var go in poolInstances)
         {
@@ -27,17 +27,17 @@ public class ObjectPool : MonoBehaviour {
             if (go.gameObject.activeSelf != true)
             {
                 //set recycl
-                instance = go;
-                instance.transform.position = pos;
+                Instance = go;
+                Instance.transform.position = pos;
             }
         }
-        //If instance is null then we create first recycleObject attach to object pool parent
-        if (instance == null)
+        //If Instance is null then we create first recycleObject attach to object pool parent
+        if (Instance == null)
         {
-            instance = CreateInstance(pos);
+            Instance = CreateInstance(pos);
         }
-        instance.Restart();
+        Instance.Restart();
 
-        return instance;
+        return Instance;
     }
 }
