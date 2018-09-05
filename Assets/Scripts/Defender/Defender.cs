@@ -3,11 +3,18 @@ using System.Collections;
 using UnityEngine.EventSystems;
 using System;
 using Assets.Scripts.Collectible_Item;
+using Assets.Scripts.Manager;
 
 public abstract class DefenderParent : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField]
     private float totalItem;
+
+    protected GameAudio gameAudio;
+    protected virtual void Start()
+    {
+        gameAudio = FindObjectOfType<GameAudio>();
+    }
     public float TotalItem
     {
         get { return totalItem; }
@@ -36,5 +43,9 @@ public abstract class DefenderParent : MonoBehaviour, IPointerDownHandler
         if (!GameManager.Instance.IsGameRunning()) return;
         if (IsItemAvailable())
             UseItem();
+    }
+    protected void PlayClickEffects(AudioClip clip)
+    {
+        SoundManager.Instance.PlayEffect(clip);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.Scripts.Attacker;
 
 public class Enemy : MonoBehaviour
 {
@@ -11,7 +12,6 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float moveSpeed;
     #endregion
-
 
     #region Properties
     public float AttackPower { get { return this.attackPower; } }

@@ -5,12 +5,13 @@ using System.Text;
 
 namespace Assets.Scripts.Collectible_Item
 {
-    class ElectricItem : CollectibleItem<Bomb>
+    class ElectricItem : CollectibleItem<Electric>
     {
         protected override void InfoBonus(string info)
         {
-            info = "Extra heart +1";
+            info = "Extra electric +1";
             base.InfoBonus(info);
+            PlayAudio(audioGame.pickUpItem);
         }
     }
 }

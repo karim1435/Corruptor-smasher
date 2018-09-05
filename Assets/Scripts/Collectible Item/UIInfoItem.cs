@@ -25,9 +25,12 @@ namespace Assets.Scripts.Collectible_Item
         }
         public void ShowInfo(string info)
         {
-            infoText.enabled = true;
-            infoText.text = info;
-            StartCoroutine(HideInfo());
+            if (GameManager.Instance.GameState != Manager.GameState.GameOver)
+            {
+                infoText.enabled = true;
+                infoText.text = info;
+                StartCoroutine(HideInfo());
+            }
         }
        
     }

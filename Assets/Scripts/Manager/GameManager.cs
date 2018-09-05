@@ -17,14 +17,17 @@ public class GameManager : Singleton<GameManager> {
     [SerializeField]
     private Transform bottom;
 
-    private float roundDuration = 60f;
+    private float roundDuration =0f;
     private float elapsedTime = 0f;
-    private GameState gameState;
+    private GameState gameState= GameState.Running;
     private float score;
+
+    private GameAudio gameAudio;
     void Start()
     {
-        Time.timeScale = 1;
-        gameState = GameState.Running;
+        gameAudio = FindObjectOfType<GameAudio>();
+
+        SoundManager.Instance.PlayBackingSound(gameAudio.backingSound);
     }
     public GameState GameState{ get { return gameState; } set { gameState = value; } }
     
@@ -40,42 +43,32 @@ public class GameManager : Singleton<GameManager> {
     {
         get { return score; }
     }
-    public float GetRemainingTime()
-    {
-        return roundDuration - elapsedTime;
-    }
     public void Restart()
     {
         Application.LoadLevel(Application.loadedLevel);
     }
     void Update()
     {
-        TimerTick();
         ManageGameState();
-    }
-    private void TimerTick()
-    {
-        elapsedTime += Time.deltaTime;
     }
     private void ManageGameState()
     {
         switch (gameState)
         {
             case GameState.Running:
-                if (elapsedTime >= roundDuration)
-                {
-                    elapsedTime = roundDuration;
-                    gameState = GameState.WinScreen;
-                }
+                Time.timeScale = 1;
                 break;
             case GameState.WinScreen:
                 Time.timeScale = 0;
                 break;
             case GameState.GameOver:
+                SoundManager.Instance.TurnofAllAudio();
                 Time.timeScale = 0;
                 break;
         }
     }
+ 
+
     public Vector3 LeftBound
     {
         get

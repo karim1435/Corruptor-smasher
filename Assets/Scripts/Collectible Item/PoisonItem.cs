@@ -11,6 +11,7 @@ namespace Assets.Scripts.Collectible_Item
         {
             info = "Extra poison +1";
             base.InfoBonus(info);
+            PlayAudio(audioGame.pickUpItem);
         }
     }
 }

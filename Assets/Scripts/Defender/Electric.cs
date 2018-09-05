@@ -13,13 +13,15 @@ public class Electric : DefenderParent
 
     private List<GameObject> enemies;
     private ElectricArea electricZone;
-    void Start()
+    protected override void Start()
     {
         enemies = new List<GameObject>();
 
         electricZone = GameObject.FindObjectOfType<ElectricArea>();
         electricZone.OnElectricInArea += AddEnemy;
         electricZone.OnElectricOffArea += RemoveEnemy;
+
+        base.Start();
     }
     void OnDisable()
     {
@@ -41,6 +43,7 @@ public class Electric : DefenderParent
             if (enemy != null)
                 enemy.GetComponent<BadEnemyDied>().Dead();
         }
+        PlayClickEffects(gameAudio.thunderEffects);
         FireAnimaton();
         ClearEnemies();
     }

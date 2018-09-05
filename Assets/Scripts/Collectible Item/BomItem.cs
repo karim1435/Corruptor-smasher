@@ -11,6 +11,7 @@ namespace Assets.Scripts.Collectible_Item
         {
             info = "Extra bomb +1";
             base.InfoBonus(info);
+            PlayAudio(audioGame.pickUpItem);
         }
     }
 }

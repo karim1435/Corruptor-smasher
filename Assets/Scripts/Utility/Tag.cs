@@ -5,6 +5,12 @@ using System.Text;
 
 namespace Assets.Assets
 {
+    public class Saving
+    {
+        private static string _bestScore = "BestScore";
+
+        public static string BestScore { get { return _bestScore; } }
+    }
     public class Tag
     {
         private static string EnemyTag = "Enemy";

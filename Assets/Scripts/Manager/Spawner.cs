@@ -7,11 +7,6 @@ using Assets.Assets;
 
 public class Spawner : MonoBehaviour {
     [SerializeField]
-    private float totalEnemyToSpawn;
-    [SerializeField]
-    private float totalItemToSpawn;
-
-    [SerializeField]
     private Vector2 delayEnemyRange = new Vector2(1f, 1.5f);
     [SerializeField]
     private Vector2 delayItemRange = new Vector2(1f, 1.5f);
@@ -25,7 +20,7 @@ public class Spawner : MonoBehaviour {
         get
         {
             return Camera.main.ScreenToWorldPoint(
-                new Vector3(0, Camera.main.pixelHeight + 2, 0));
+                new Vector3(75, Camera.main.pixelHeight + 2, 0));
         }
     }
     private Vector3 TopRightSpawner
@@ -33,9 +28,13 @@ public class Spawner : MonoBehaviour {
         get
         {
             return Camera.main.ScreenToWorldPoint(new Vector3
-                (Camera.main.pixelWidth, Camera.main.pixelHeight + 2, 0));
+                (Camera.main.pixelWidth-75, Camera.main.pixelHeight + 2, 0));
         }
         
+    }
+    void Start()
+    {
+        GerarateGameObject();  
     }
     private Vector3 SpawnerPosition
     {
@@ -60,27 +59,19 @@ public class Spawner : MonoBehaviour {
             return UnityEngine.Random.Range(delayItemRange.x, delayItemRange.y);
         }
     }
-    void Start()
+    private void GerarateGameObject()
     {
-        GenerateRandomEnemy();
-        GenerateRandomCollectibleItem();
+        StartCoroutine(Instantiate(collectableItemPrefarb, ItemDelay));
+        StartCoroutine(Instantiate(enemiesPrefarb, EnemyDelay));
     }
-    private void GenerateRandomEnemy()
+    private IEnumerator Instantiate(GameObject[] prefarb,float delay)
     {
-        StartCoroutine(Instantiate(enemiesPrefarb,totalEnemyToSpawn,EnemyDelay));
-    }
-    private void GenerateRandomCollectibleItem()
-    {
-        StartCoroutine(Instantiate(collectableItemPrefarb, totalItemToSpawn,ItemDelay));
-    }
-    private IEnumerator Instantiate(GameObject[] prefarb,float spawnTotal,float delay)
-    {
-        for (int i = 0; i < spawnTotal; i++)
+        if (GameManager.Instance.IsGameRunning())
         {
             GameObject objectToSpawn = prefarb[Random.Range(0, prefarb.Length)];
             GameObject spawnGameObjecrt = (GameObject)Instantiate(objectToSpawn, SpawnerPosition, Quaternion.identity);
-            yield return new WaitForSeconds(delay);
         }
-        
+        yield return new WaitForSeconds(delay);
+        StartCoroutine(Instantiate(prefarb, delay));
     }
 }

@@ -11,7 +11,7 @@ namespace Assets.Scripts.Collectible_Item
         protected override void GiveExtraBonus()
         {
             defender.gameObject.GetComponent<TowerHealth>().BonusHealth(bonus);
+            PlayAudio(audioGame.newLife);
         }
-
     }
 }

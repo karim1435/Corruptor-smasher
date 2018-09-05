@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.Scripts.Manager;
 
 public class EnemyDie : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class EnemyDie : MonoBehaviour
 
     private Enemy enemy;
 
+    protected GameAudio gameAudio;
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -22,6 +25,8 @@ public class EnemyDie : MonoBehaviour
 
         enemyHealth = GetComponent<EnemyHealth>();
         enemyHealth.OnZeroHealth += Dead;
+
+        gameAudio = FindObjectOfType<GameAudio>();
     }
     void OnDisable()
     {
@@ -30,8 +35,7 @@ public class EnemyDie : MonoBehaviour
     public virtual void Dead()
     {
         if (onReportMove != null)
-            onReportMove(); 
-
+            onReportMove();
         OnDeathAnimation();
       
     }
@@ -44,4 +48,5 @@ public class EnemyDie : MonoBehaviour
     {
         Destroy(gameObject, 0.5f);
     }
+    
 }

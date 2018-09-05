@@ -17,14 +17,16 @@ public class RandomMovement :Movement {
     private int offset=10;
     protected override void Start()
     {
+
         SetupBoundary();
+
         base.Start();
     }
 
     private void SetupBoundary()
     {
-        maxX = GameManager.Instance.RightBound.x;
-        minX = GameManager.Instance.LeftBound.x;
+        maxX = GameManager.Instance.RightBound.x-0.5f;
+        minX = GameManager.Instance.LeftBound.x+0.5f;
         maxY = GameManager.Instance.TopBound.y;
         minY = (Screen.height / Camera.main.pixelHeight) / 2 + offset;
     }

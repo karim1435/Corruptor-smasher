@@ -11,8 +11,13 @@ namespace Assets.Scripts.Attacker
     {
         public override void Dead()
         {
-            GameManager.Instance.GameState = GameState.GameOver;
+            PlaySound();
+            GameManager.Instance.GameState = GameState.GameOver;       
             base.Dead();
+        }
+        private void PlaySound()
+        {
+            SoundManager.Instance.PlayEffect(gameAudio.ohnoEffects);
         }
     }
 }

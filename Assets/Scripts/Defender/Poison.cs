@@ -19,5 +19,6 @@ public class Poison : DefenderParent
             if (enemy != null && enemy.tag == Tag.Enemy)
                 enemy.StopMove(poisonDelay);
         }
+        PlayClickEffects(gameAudio.poisonEffects);
     }
 }

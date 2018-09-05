@@ -3,6 +3,7 @@ using System.Collections;
 using Assets.Assets;
 using Assets.Scripts.Collectible_Item;
 using System;
+using Assets.Scripts.Manager;
 
 public class TowerHealth : MonoBehaviour {
 
@@ -15,12 +16,15 @@ public class TowerHealth : MonoBehaviour {
     private Tower tower;
     public float CurrentHp { get { return currentHp; } }
 
+    GameAudio gameAudio;
     void Start()
     {
         tower = GetComponent<Tower>();
         intialHp = tower.Hp;
         currentHp = intialHp;
         tower.onCollisionEnemy += OnTrigger;
+
+        gameAudio = FindObjectOfType<GameAudio>();
     }
     void OnDisable()
     {
@@ -37,10 +41,12 @@ public class TowerHealth : MonoBehaviour {
         {
             float attackPower = other.GetComponent<Enemy>().AttackPower;
             AttackHp(attackPower);
+            Destroy(other.gameObject);
         }
     }
     private void AttackHp(float damage)
     {
+        PlayLostlifeEffect();
         currentHp -= damage;
         CheckHp();
     }
@@ -51,5 +57,9 @@ public class TowerHealth : MonoBehaviour {
             if (OnZeroHp != null)
                 OnZeroHp();
         }
+    }
+    private void PlayLostlifeEffect()
+    {
+        SoundManager.Instance.PlayEffect(gameAudio.lostLife);
     }
 }

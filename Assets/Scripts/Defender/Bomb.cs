@@ -15,6 +15,8 @@ public class Bomb : DefenderParent
             if (enemy != null)
                 enemy.Dead();
         }
+        PlayClickEffects(gameAudio.bombEffects);
     }
+    
 }
 

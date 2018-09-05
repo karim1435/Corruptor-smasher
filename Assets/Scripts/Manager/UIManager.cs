@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using Assets.Scripts.Manager;
+using Assets.Assets;
 
 public class UIManager : MonoBehaviour
 {
@@ -13,37 +14,66 @@ public class UIManager : MonoBehaviour
     private Text gameOverText;
     [SerializeField]
     private Text scoreText;
+    [SerializeField]
+    private Text bestScoreText;
+
+    private bool beatBestScore=false;
+
+    private float bestScore = 0f;
+    void Start()
+    {
+        bestScore = GetBestScore();
+    }
     void Update()
     {
         SetScore();
-        CreateTimer();
         WinOrGameover();
     }
     private void SetScore()
     {
-        if (scoreText)
-            scoreText.text = GameManager.Instance.Score.ToString();
+        float currentScore= GameManager.Instance.Score;
+        SetNewBestScore(currentScore);
+        scoreText.text = "Score: " + currentScore.ToString();
     }
-    private void CreateTimer()
+    private void SetNewBestScore(float currentScore)
     {
-        if (timerText)
-            timerText.text = FormatStringToTimer(GameManager.Instance.GetRemainingTime());
+        if (currentScore > bestScore)
+        {
+            bestScore = currentScore;
+            beatBestScore = true;
+            PlayerPrefs.SetFloat(Saving.BestScore, bestScore);
+        }
     }
     private void WinOrGameover()
     {
         if (!GameManager.Instance.IsGameRunning() && gameCanvas)
         {
-            gameCanvas.SetActive(true);
-            if (gameOverText)
-                gameOverText.text = GameManager.Instance.GameState == GameState.WinScreen ? "You won!" : "Game Over";
+            ShowFinalResult();
+
+            UpdateBestScore();
         }
     }
 
-    string FormatStringToTimer(float value)
+    private void ShowFinalResult()
     {
-        string minutes = Mathf.Floor(value / 60.0f).ToString("0");
-        string seconds = (value % 60.0f).ToString("00");
-        string time = minutes + ":" + seconds;
-        return time;
+        gameCanvas.SetActive(true);
+        if (gameOverText)
+            gameOverText.text = GameManager.Instance.GameState == GameState.WinScreen ? "You won!" : "Game Over";
     }
+
+    private void UpdateBestScore()
+    {
+        Color textColor = beatBestScore ? Color.yellow : Color.white;
+        if (bestScoreText)
+        {
+            bestScoreText.color = textColor;
+            bestScoreText.text = GetBestScore().ToString();
+        }
+    }
+
+    private static float GetBestScore()
+    {
+        return PlayerPrefs.GetFloat(Saving.BestScore);
+    }
+
 }

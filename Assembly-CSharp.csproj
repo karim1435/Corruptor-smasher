@@ -74,10 +74,12 @@
      <Compile Include="Assets\Scripts\Defender\Poison.cs" />
      <Compile Include="Assets\Scripts\Defender\UIDefender.cs" />
      <Compile Include="Assets\Scripts\Manager\DestroyOffscreen.cs" />
+     <Compile Include="Assets\Scripts\Manager\GameAudio.cs" />
      <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
      <Compile Include="Assets\Scripts\Manager\GameState.cs" />
      <Compile Include="Assets\Scripts\Manager\Restart.cs" />
      <Compile Include="Assets\Scripts\Manager\Singleton.cs" />
+     <Compile Include="Assets\Scripts\Manager\SoundManager.cs" />
      <Compile Include="Assets\Scripts\Manager\Spawner.cs" />
      <Compile Include="Assets\Scripts\Manager\UIManager.cs" />
      <Compile Include="Assets\Scripts\Pooler\GameObjectUtil.cs" />

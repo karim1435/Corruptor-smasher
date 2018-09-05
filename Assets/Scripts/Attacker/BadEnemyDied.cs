@@ -12,8 +12,14 @@ namespace Assets.Scripts.Attacker
         private int deadPoint;
         public override void Dead()
         {
+            PlayDeathEffects();
             GameManager.Instance.AddScore(deadPoint);
             base.Dead();
+        }
+
+        private void PlayDeathEffects()
+        {
+            SoundManager.Instance.RandomSoundEffect(gameAudio.death);
         }
     }
 }
